@@ -33,7 +33,7 @@ export class TareaColumnaComponent {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       const tareaMovida = event.previousContainer.data[event.previousIndex];
-      // Asegúrate de que la tareaMovida sea una copia para evitar mutar el array original directamente
+      //tareaMovida copia para no modificar el original
       const tareaActualizada = { ...tareaMovida, estado: this.estado };
       transferArrayItem(
         event.previousContainer.data,

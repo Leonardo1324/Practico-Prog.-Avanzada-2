@@ -18,7 +18,6 @@ export class TareaFormComponent {
   tareaForm!: FormGroup;
   isEditMode: boolean = false;
 
-  // CAMBIO: Inyecta DialogRef (no es opcional aquí, ya que SIEMPRE se usará en un diálogo)
   constructor(private fb: FormBuilder, public dialogRef: DialogRef<Tarea>) { } // El tipo genérico puede ser el tipo de datos que se devolverán
 
   ngOnInit(): void {
@@ -32,19 +31,7 @@ export class TareaFormComponent {
     descripcion: [tareaRecibida?.descripcion || '', Validators.required],
     estado: [tareaRecibida?.estado || 'pendiente', Validators.required],
     fechaLimite: [tareaRecibida?.fechaLimite || this.getCurrentDate(), Validators.required]
-  });
-
-
-
-    // Si estás pasando 'tareaParaEditar' al diálogo, el DialogRef
-    // te lo proporcionará a través de su 'config.data'.
-    // Esto es si el componente no es un Input, sino que recibe data por el dialogRef
-    // if (this.dialogRef.config.data) {
-    //   this.tareaParaEditar = this.dialogRef.config.data;
-    //   this.isEditMode = true;
-    //   this.tareaForm.patchValue(this.tareaParaEditar);
-    // }
-  }
+  });}
 
   getCurrentDate(): string {
     const today = new Date();
@@ -65,7 +52,6 @@ export class TareaFormComponent {
   }
 
   onCancel(): void {
-    // CAMBIO: Cierra el diálogo sin pasar ningún resultado (o pasa 'undefined')
     this.dialogRef.close();
   }
 }
