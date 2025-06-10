@@ -1,0 +1,53 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ isEditMode ? 'Editar Tarea' : 'Crear Tarea' }}</h4>
+</div>
+<div class="modal-body">
+  <form [formGroup]="tareaForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombre">Título</label>
+      <input type="text" id="nombre" formControlName="nombre" class="form-control"
+             [class.is-invalid]="tareaForm.get('nombre')?.invalid && tareaForm.get('nombre')?.touched">
+      <div class="invalid-feedback" *ngIf="tareaForm.get('nombre')?.errors?.['required'] && tareaForm.get('nombre')?.touched">
+        El título es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" formControlName="descripcion" class="form-control" rows="3"
+                [class.is-invalid]="tareaForm.get('descripcion')?.invalid && tareaForm.get('descripcion')?.touched"></textarea>
+      <div class="invalid-feedback" *ngIf="tareaForm.get('descripcion')?.errors?.['required'] && tareaForm.get('descripcion')?.touched">
+        La descripción es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="estado">Estado</label>
+      <select id="estado" formControlName="estado" class="form-control"
+              [class.is-invalid]="tareaForm.get('estado')?.invalid && tareaForm.get('estado')?.touched">
+        <option value="pendiente">Pendiente</option>
+        <option value="en-proceso">En Proceso</option>
+        <option value="terminada">Terminada</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="tareaForm.get('estado')?.errors?.['required'] && tareaForm.get('estado')?.touched">
+        El estado es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="fechaLimite">Fecha Límite</label>
+      <input type="date" id="fechaLimite" formControlName="fechaLimite" class="form-control"
+             [class.is-invalid]="tareaForm.get('fechaLimite')?.invalid && tareaForm.get('fechaLimite')?.touched">
+      <div class="invalid-feedback" *ngIf="tareaForm.get('fechaLimite')?.errors?.['required'] && tareaForm.get('fechaLimite')?.touched">
+        La fecha límite es obligatoria.
+      </div>
+    </div>
+
+    <div class="mt-4 text-right">
+      <button type="button" class="btn btn-secondary mr-2" (click)="onCancel()">Cancelar</button>
+      <button type="submit" class="btn btn-primary" [disabled]="tareaForm.invalid">
+        {{ isEditMode ? 'Guardar Cambios' : 'Crear Tarea' }}
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+<div class="card mb-3 shadow-sm {{ getUrgenciaClass() }}" style="border-left: 5px solid;">
+  <div class="card-body">
+    <h5 class="card-title">{{ tarea.nombre }}</h5>
+    <p class="card-text">{{ tarea.descripcion }}</p>
+    <p class="card-text">
+      <small class="text-muted">Fecha límite: {{ tarea.fechaLimite | date:'shortDate' }}</small>
+    </p>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-sm btn-outline-primary mr-2" (click)="onEdit()">
+        <i class="bi bi-pencil"></i> Editar
+      </button>
+      <button class="btn btn-sm btn-outline-danger" (click)="onDelete()">
+        <i class="bi bi-trash"></i> Eliminar
+      </button>
+    </div>
+  </div>
+</div>

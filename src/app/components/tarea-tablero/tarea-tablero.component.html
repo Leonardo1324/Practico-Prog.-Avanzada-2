@@ -1,0 +1,42 @@
+<div class="container-fluid mt-4">
+    <app-contadr-tarea [allTareas]="allTareas"> </app-contadr-tarea>
+
+  <div class="d-flex justify-content-end mb-4">
+    <button class="btn btn-success" (click)="openTareaFormModal()">
+      <i class="bi bi-plus-circle"></i> Nueva Tarea
+    </button>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <app-tarea-columna
+        titulo="Pendientes"
+        estado="pendiente"
+        [tareas]="tareasPendientes"
+        (tareaModificada)="openTareaFormModal($event)"
+        (tareaEliminada)="onDeleteTarea($event)"
+        (tareaMovida)="onTareaMovida($event)">
+      </app-tarea-columna>
+    </div>
+    <div class="col-md-4 mb-4">
+      <app-tarea-columna
+        titulo="En Proceso"
+        estado="en-proceso"
+        [tareas]="tareasEnProceso"
+        (tareaModificada)="openTareaFormModal($event)"
+        (tareaEliminada)="onDeleteTarea($event)"
+        (tareaMovida)="onTareaMovida($event)">
+      </app-tarea-columna>
+    </div>
+    <div class="col-md-4 mb-4">
+      <app-tarea-columna
+        titulo="Terminadas"
+        estado="terminada"
+        [tareas]="tareasTerminadas"
+        (tareaModificada)="openTareaFormModal($event)"
+        (tareaEliminada)="onDeleteTarea($event)"
+        (tareaMovida)="onTareaMovida($event)">
+      </app-tarea-columna>
+    </div>
+  </div>
+</div>

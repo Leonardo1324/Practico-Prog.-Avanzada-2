@@ -1,0 +1,14 @@
+.card-header {
+  background: linear-gradient(135deg, #17a2b8, #138496);
+  color: white;
+  font-size: 1.2rem;
+}
+
+.card-title {
+  font-size: 1.3rem;
+}
+
+.card-text i {
+  margin-right: 6px;
+  color: #6c757d;
+}

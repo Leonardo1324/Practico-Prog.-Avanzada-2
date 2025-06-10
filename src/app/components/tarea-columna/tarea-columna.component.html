@@ -1,0 +1,24 @@
+<div class="card h-100">
+  <div class="card-header bg-{{ estado === 'pendiente' ? 'secondary' : (estado === 'en-proceso' ? 'primary' : 'success') }} text-white">
+    {{ titulo }} ({{ tareas.length }})
+  </div>
+  <div class="card-body overflow-auto"
+       cdkDropList
+       [cdkDropListData]="tareas"
+       [id]="'columna-' + estado"
+       [cdkDropListConnectedTo]="getConnectedList()"
+       (cdkDropListDropped)="drop($event)">
+    <ng-container *ngIf="tareas.length > 0; else noTareas">
+      <app-tarea-item
+        cdkDrag
+        *ngFor="let tarea of tareas"
+        [tarea]="tarea" 
+        (edit)="onEdit(tarea)"
+        (delete)="onDelete(+tarea.id)">
+      </app-tarea-item>
+    </ng-container>
+    <ng-template #noTareas>
+      <p class="text-muted text-center mt-3">No hay tareas en esta columna.</p>
+    </ng-template>
+  </div>
+</div>

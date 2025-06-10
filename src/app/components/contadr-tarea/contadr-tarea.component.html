@@ -1,0 +1,33 @@
+<div class="card mt-4 shadow-sm rounded-4 border-0">
+  <div class="card-header bg-gradient bg-info text-white text-center rounded-top-4">
+    <h5 class="mb-0">Tarea más próxima a vencer</h5>
+  </div>
+
+  <div class="card-body" *ngIf="tareaMasProxima">
+    <h5 class="card-title text-primary fw-semibold">{{ tareaMasProxima.nombre }}</h5>
+
+    <p class="card-text mb-2">
+      <i class="bi bi-card-text text-secondary"></i>
+      <strong>Descripción:</strong> {{ tareaMasProxima.descripcion }}
+    </p>
+
+    <p class="card-text mb-2">
+      <i class="bi bi-calendar-event text-secondary"></i>
+      <strong>Fecha límite:</strong>
+      {{ tareaMasProxima.fechaLimite | date:'fullDate' }}
+    </p>
+
+    <p class="card-text fs-5 fw-bold"
+       [ngClass]="{
+        'text-danger': diasRestantes !== undefined && diasRestantes <= 3,
+        'text-success': diasRestantes !== undefined && diasRestantes > 3
+      }">
+      <i class="bi bi-clock-history me-1"></i>
+      {{ diasRestantes !== undefined ? (diasRestantes <= 0 ? '¡Vencida!' : 'Faltan ' + diasRestantes + ' días') : '' }}
+    </p>
+  </div>
+
+  <div class="card-body text-center text-muted" *ngIf="!tareaMasProxima">
+    <i class="bi bi-info-circle-fill"></i> No hay tareas pendientes o en proceso.
+  </div>
+</div>
