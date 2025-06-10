@@ -18,7 +18,8 @@ export class TareaFormComponent {
   tareaForm!: FormGroup;
   isEditMode: boolean = false;
 
-  constructor(private fb: FormBuilder, public dialogRef: DialogRef<Tarea>) { } // El tipo genérico puede ser el tipo de datos que se devolverán
+  /// El tipo genérico puede ser el tipo de datos que se devolverán
+  constructor(private fb: FormBuilder, public dialogRef: DialogRef<Tarea>) { } 
 
   ngOnInit(): void {
   const tareaRecibida = this.dialogRef.config?.data as Tarea | null;
@@ -43,9 +44,7 @@ export class TareaFormComponent {
 
   onSubmit(): void {
     if (this.tareaForm.valid) {
-      // CAMBIO: Cierra el diálogo y pasa la tarea como resultado
       this.dialogRef.close(this.tareaForm.value as Tarea);
-      // Ya no necesitas emitir 'tareaGuardada', el padre se suscribirá al 'afterClosed' del diálogo
     } else {
       this.tareaForm.markAllAsTouched();
     }

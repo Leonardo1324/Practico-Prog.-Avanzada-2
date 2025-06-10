@@ -14,7 +14,6 @@ import { TareaColumnaComponent } from '../tarea-columna/tarea-columna.component'
   styleUrl: './tarea-tablero.component.css'
 })
 export class TareaTableroComponent {
-  // Inyección moderna de dependencias
   private dialog = inject(Dialog);
   private tareaService = inject(TareaServiceService);
 
@@ -22,8 +21,6 @@ export class TareaTableroComponent {
   tareasPendientes: Tarea[] = [];
   tareasEnProceso: Tarea[] = [];
   tareasTerminadas: Tarea[] = [];
-
-  // Ya no necesitas bsModalRef ni constructor
 
   ngOnInit(): void {
     this.loadTareas();
@@ -48,7 +45,7 @@ export class TareaTableroComponent {
   }
 
   openTareaFormModal(tarea?: Tarea): void {
-    // Usar CDK Dialog en lugar de ngx-bootstrap
+    // Usar CDK Dialog
     const dialogRef = this.dialog.open(TareaFormComponent, {
       data: tarea, // Pasar la tarea si es una edición
       width: '500px',
@@ -95,7 +92,7 @@ export class TareaTableroComponent {
     this.tareaService.updateTarea(tareaActualizada).subscribe(
       () => {
         console.log('Tarea movida y actualizada:', tareaActualizada);
-        this.loadTareas(); // Recargar todas las tareas para mantener la consistencia
+        this.loadTareas(); 
       },
       (error: any) => console.error('Error al mover tarea:', error)
     );

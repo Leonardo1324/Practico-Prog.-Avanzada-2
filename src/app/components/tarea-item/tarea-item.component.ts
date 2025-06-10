@@ -30,7 +30,7 @@ export class TareaItemComponent {
   }
 
   // Método para determinar la clase de urgencia (se puede mejorar con un pipe)
-  getUrgenciaClass(): string {
+  getUrgencia(): string {
     const hoy = new Date();
     const fechaLimite = new Date(this.tarea.fechaLimite);
     const diffTime = fechaLimite.getTime() - hoy.getTime();
@@ -39,7 +39,7 @@ export class TareaItemComponent {
     if (this.tarea.estado === 'terminada') {
         return 'border-success'; // Verde para terminadas
     } else if (diffDays <= 0) {
-        return 'border-danger'; // Roja si vencida
+        return 'border-danger'; // Roja si esta vencida
     } else if (diffDays <= 3) {
         return 'border-warning'; // Naranja si quedan 3 días o menos
     }
