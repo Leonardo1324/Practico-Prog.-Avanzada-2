@@ -18,7 +18,6 @@ export class TareaFormComponent {
   tareaForm!: FormGroup;
   isEditMode: boolean = false;
 
-  /// El tipo genérico puede ser el tipo de datos que se devolverán
   constructor(private fb: FormBuilder, public dialogRef: DialogRef<Tarea>) { } 
 
   ngOnInit(): void {

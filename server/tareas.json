@@ -4,7 +4,7 @@
       "id": "1201",
       "nombre": "Trabajo Practico",
       "descripcion": "trabajo práctico integrador de angular (tener en cuenta que en el mismo se requiere al menos un ABMC funcional completo).",
-      "estado": "en-proceso",
+      "estado": "pendiente",
       "fechaLimite": "2025-06-11"
     }
   ]
